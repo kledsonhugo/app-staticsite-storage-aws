@@ -1,38 +1,35 @@
+# VARS
+variable "bucket_name" {
+    default = "static-site-kledson-basso-09"
+}
+
+variable "website" {
+    default = "true"
+}
+
 # S3 BUCKET
-resource "aws_s3_bucket" "b" {
-    bucket = "static-site-kledson-basso"
-}
-
-# S3 BUCKET CONFIG ACL
-resource "aws_s3_bucket_acl" "b-acl" {
-    bucket = aws_s3_bucket.b.id
+resource "aws_s3_bucket" "bucket" {
+    bucket = "${var.bucket_name}"
     acl    = "public-read"
-}
-
-# S3 BUCKET CONFIG VERSIONING
-resource "aws_s3_bucket_versioning" "b-versioning" {
-    bucket = aws_s3_bucket.b.id
-    versioning_configuration {
-        status = "Enabled"
+    website {
+        index_document = "index.html"
+        error_document = "error.html"
+    }
+    versioning {
+        enabled = true
     }
 }
 
-# S3 BUCKET CONFIG STATIC WEBSITE
-resource "aws_s3_bucket_website_configuration" "b-website" {
-    bucket = aws_s3_bucket.b.bucket
-    index_document {
-        suffix = "index.html"
-    }
-    error_document {
-        key = "error.html"
-    }
+output "aws_s3_bucket_website_endpoint" {
+    value = "${var.website =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
 }
 
 # S3 BUCKET OBJECTS
-resource "aws_s3_bucket_object" "b-objects" {
-    bucket   = aws_s3_bucket.b.id
+resource "aws_s3_bucket_object" "bucket-objects" {
+    bucket   = aws_s3_bucket.bucket.id
     for_each = fileset("data/", "*")
     key      = each.value
     source   = "data/${each.value}"
     acl      = "public-read"
+    etag     = "${md5(file("data/${each.value}"))}"
 }
