@@ -1,3 +1,4 @@
+.aws/
 .git/
 .terraform.lock.hcl
 .terraform/
