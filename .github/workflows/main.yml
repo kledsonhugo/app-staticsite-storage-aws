@@ -6,14 +6,18 @@ on:
     - main
 
 jobs:
-  terraform_apply:
+
+  job-Hello_World:
     runs-on: ubuntu-latest
     steps:
-    - name: Hello world
+    - name: Hello World
       run : echo hello world
 
-#    - name: Checkout repo
-#      uses: actions/checkout@v1
+  job-Terraform_Apply:
+    runs-on: ubuntu-latest
+    steps:
+    - name: CheckOut Repo
+      uses: actions/checkout@v1
 #
 #    - name: Set Credentials
 #      uses: aws-actions/configure-aws-credentials@v1
