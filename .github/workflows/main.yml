@@ -32,9 +32,18 @@ jobs:
     - name: Step 02 - Verify Terraform version
       run : terraform --version
 
-    - name: Step-CheckOut Repo
+    - name: Step 03 - CheckOut Repo
       uses: actions/checkout@v1
 
+    - name: Step 04 - Terraform init
+      env:
+        AWS_ACCESS_KEY_ID    : ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN    : ${{ secrets.AWS_SESSION_TOKEN }}
+      run: terraform init -input=false
+
+    - name: Step 05 - Terraform validation
+      run: terraform validate
 
 #
 #    - name: Set Credentials
