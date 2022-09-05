@@ -13,7 +13,7 @@ terraform {
     key                     = "terraform.tfstate"
     region                  = "us-east-1"
     dynamodb_table          = "static-site-kledson-basso-table"
-    shared_credentials_file = ".aws/credentials"
+#    shared_credentials_file = ".aws/credentials"
   }
 
 }
@@ -21,5 +21,5 @@ terraform {
 # PROVIDER CONFIG
 provider "aws" {
     region                  = "us-east-1"
-    shared_credentials_file = ".aws/credentials"
+#    shared_credentials_file = ".aws/credentials"
 }
