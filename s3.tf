@@ -3,9 +3,9 @@ variable "bucket_name" {
     default = "static-site-kledson-basso"
 }
 
-variable "website_endpoint" {
-    default = "true"
-}
+#variable "website_endpoint" {
+#    default = "true"
+#}
 
 # S3 BUCKET
 resource "aws_s3_bucket" "bucket" {
