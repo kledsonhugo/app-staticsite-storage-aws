@@ -38,7 +38,7 @@ resource "aws_s3_bucket_versioning" "bucket-versioning" {
 }
 
 resource "aws_s3_bucket_acl" "bucket-acl" {
-    bucket = aws_s3_bucket.example.id
+    bucket = "${var.bucket_name}"
     acl    = "public-read"
 }
 
