@@ -20,7 +20,7 @@ jobs:
 
     steps:
 
-    - name: Step 01 - Install Terraform
+    - name: Step 01 - Terraform Install
       env :
         TERRAFORM_VERSION: "1.2.7"
       run : |
@@ -29,36 +29,25 @@ jobs:
         unzip terraform_"$tf_version"_linux_amd64.zip
         sudo mv terraform /usr/local/bin/
 
-    - name: Step 02 - Verify Terraform version
+    - name: Step 02 - Terraform Version
       run : terraform --version
 
-    - name: Step 03 - CheckOut Repo
+    - name: Step 03 - CheckOut GitHub Repo
       uses: actions/checkout@v1
 
-    - name: Step 04 - Terraform init
-      env:
+    - name: Step 04 - Terraform Init
+      env :
         AWS_ACCESS_KEY_ID    : ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_SESSION_TOKEN    : ${{ secrets.AWS_SESSION_TOKEN }}
-      run: terraform init -input=false
+      run : terraform init -input=false
 
-    - name: Step 05 - Terraform validation
-      run: terraform validate
+    - name: Step 05 - Terraform Validate
+      run : terraform validate
 
-#
-#    - name: Set Credentials
-#      uses: aws-actions/configure-aws-credentials@v1
-#      with:
-#        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-#        aws-region: us-east-1
-#
-#    - name: Deploy objects to S3 bucket
-#      run: |
-#        aws s3 sync ./ s3://Bucket-Name \
-#        --exclude '.git/*' \
-#        --exclude '.github/*' \
-#        --exclude 'README.md' \
-#        --follow-symlinks \
-#        --delete
+    - name: Step 06 - Terraform Apply
+      env :
+        AWS_ACCESS_KEY_ID    : ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SESSION_TOKEN    : ${{ secrets.AWS_SESSION_TOKEN }}
+      run : terraform apply -auto-approve -input=false
