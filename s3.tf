@@ -10,7 +10,7 @@ variable "website_endpoint" {
 # S3 BUCKET
 resource "aws_s3_bucket" "bucket" {
     bucket = "${var.bucket_name}"
-    acl    = "public-read"
+#    acl    = "public-read"
 #    website {
 #        index_document = "index.html"
 #        error_document = "error.html"
@@ -35,6 +35,11 @@ resource "aws_s3_bucket_versioning" "bucket-versioning" {
     versioning_configuration {
         status = "Enabled"
     }
+}
+
+resource "aws_s3_bucket_acl" "bucket-acl" {
+    bucket = aws_s3_bucket.example.id
+    acl    = "public-read"
 }
 
 #output "aws_s3_bucket_website_endpoint" {
