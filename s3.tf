@@ -11,14 +11,25 @@ variable "website_endpoint" {
 resource "aws_s3_bucket" "bucket" {
     bucket = "${var.bucket_name}"
     acl    = "public-read"
-    website {
-        index_document = "index.html"
-        error_document = "error.html"
-    }
+#    website {
+#        index_document = "index.html"
+#        error_document = "error.html"
+#    }
     versioning {
         enabled = true
     }
 }
+
+resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
+    bucket = "${var.bucket_name}"
+    index_document {
+        suffix = "index.html"
+    }
+    error_document {
+        key = "error.html"
+    }
+}
+
 
 #output "aws_s3_bucket_website_endpoint" {
 #    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
