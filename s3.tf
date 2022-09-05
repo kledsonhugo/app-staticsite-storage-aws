@@ -30,6 +30,12 @@ resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
     }
 }
 
+resource "aws_s3_bucket_versioning" "versioning_example" {
+    bucket = "${var.bucket_name}"
+    versioning_configuration {
+        status = "Enabled"
+    }
+}
 
 #output "aws_s3_bucket_website_endpoint" {
 #    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
