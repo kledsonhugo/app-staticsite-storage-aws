@@ -15,9 +15,9 @@ resource "aws_s3_bucket" "bucket" {
 #        index_document = "index.html"
 #        error_document = "error.html"
 #    }
-    versioning {
-        enabled = true
-    }
+#    versioning {
+#        enabled = true
+#    }
 }
 
 resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
     }
 }
 
-resource "aws_s3_bucket_versioning" "versioning_example" {
+resource "aws_s3_bucket_versioning" "bucket-versioning" {
     bucket = "${var.bucket_name}"
     versioning_configuration {
         status = "Enabled"
