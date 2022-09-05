@@ -9,15 +9,33 @@ jobs:
 
   job-Hello_World:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Hello World
+
+    - name: Step 00 - Hello World
       run : echo hello world
 
   job-Terraform_Apply:
     runs-on: ubuntu-latest
+
     steps:
-    - name: CheckOut Repo
+
+    - name: Step 01 - Install Terraform
+      env :
+        TERRAFORM_VERSION: "1.2.7"
+      run : |
+        tf_version=$TERRAFORM_VERSION
+        wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+        unzip terraform_"$tf_version"_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+
+    - name: Step 02 - Verify Terraform version
+      run : terraform --version
+
+    - name: Step-CheckOut Repo
       uses: actions/checkout@v1
+
+
 #
 #    - name: Set Credentials
 #      uses: aws-actions/configure-aws-credentials@v1
