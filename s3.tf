@@ -20,9 +20,9 @@ resource "aws_s3_bucket" "bucket" {
     }
 }
 
-output "aws_s3_bucket_website_endpoint" {
-    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
-}
+#output "aws_s3_bucket_website_endpoint" {
+#    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
+#}
 
 # S3 BUCKET OBJECTS
 resource "aws_s3_bucket_object" "bucket-objects" {
