@@ -1,32 +1,21 @@
 # VARS
+
 variable "bucket_name" {
     default = "static-site-kledson-basso-20"
 }
 
-#variable "website_endpoint" {
-#    default = "true"
-#}
-
-# S3 BUCKET
-resource "aws_s3_bucket" "bucket" {
-    bucket = "${var.bucket_name}"
-#    acl    = "public-read"
-#    website {
-#        index_document = "index.html"
-#        error_document = "error.html"
-#    }
-#    versioning {
-#        enabled = true
-#    }
+variable "website_endpoint" {
+    default = "true"
 }
 
-resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
-    bucket = aws_s3_bucket.bucket.id
-    index_document {
-        suffix = "index.html"
-    }
-    error_document {
-        key = "error.html"
+
+# S3 BUCKET
+
+resource "aws_s3_bucket" "bucket" {
+    bucket = "${var.bucket_name}"
+    website {
+        index_document = "index.html"
+        error_document = "error.html"
     }
 }
 
@@ -42,11 +31,13 @@ resource "aws_s3_bucket_acl" "bucket-acl" {
     acl    = "public-read"
 }
 
-#output "aws_s3_bucket_website_endpoint" {
-#    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
-#}
+output "aws_s3_bucket_website_endpoint" {
+    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
+}
+
 
 # S3 BUCKET OBJECTS
+
 resource "aws_s3_bucket_object" "bucket-objects" {
     bucket       = aws_s3_bucket.bucket.id
     for_each     = fileset("data/", "*")
