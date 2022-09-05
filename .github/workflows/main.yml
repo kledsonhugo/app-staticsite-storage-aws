@@ -6,14 +6,12 @@ on:
     - main
 
 jobs:
-
   terraform_apply:
     runs-on: ubuntu-latest
-
     steps:
-
     - name: Hello world
-    - run : echo hello world
+    - run : |
+        echo hello world
 
 #  deploy:
 #    runs-on: ubuntu-latest
