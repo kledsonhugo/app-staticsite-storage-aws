@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
-    bucket = "${var.bucket_name}"
+    bucket = aws_s3_bucket.bucket.id
     index_document {
         suffix = "index.html"
     }
@@ -31,14 +31,14 @@ resource "aws_s3_bucket_website_configuration" "bucket-website_config" {
 }
 
 resource "aws_s3_bucket_versioning" "bucket-versioning" {
-    bucket = "${var.bucket_name}"
+    bucket = aws_s3_bucket.bucket.id
     versioning_configuration {
         status = "Enabled"
     }
 }
 
 resource "aws_s3_bucket_acl" "bucket-acl" {
-    bucket = "${var.bucket_name}"
+    bucket = aws_s3_bucket.bucket.id
     acl    = "public-read"
 }
 
