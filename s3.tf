@@ -1,7 +1,7 @@
 # VARS
 
 variable "bucket_name" {
-    default = "static-site-kledson-basso-lalala"
+    default = "static-site-kledson-basso"
 }
 
 variable "website_endpoint" {
