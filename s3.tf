@@ -1,7 +1,7 @@
 # VARS
 
 variable "bucket_name" {
-    default = "static-site-kledson-basso"
+    default = "terraform-staticsite"
 }
 
 variable "website_endpoint" {

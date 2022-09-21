@@ -9,10 +9,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "static-site-kledson-basso-tf-state"
+    bucket         = "tf-state-staticsite-bucket"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "static-site-kledson-basso-table"
+    dynamodb_table = "tf-state-staticsite-table"
   }
 
 }
