@@ -1,15 +1,4 @@
-# VARS
-
-variable "bucket_name" {
-    default = "terraform-staticsite"
-}
-
-variable "website_endpoint" {
-    default = "true"
-}
-
-
-# S3 BUCKET
+# RESOURCE: S3 BUCKET (INFRA)
 
 resource "aws_s3_bucket" "bucket" {
     bucket = "${var.bucket_name}"
@@ -36,7 +25,7 @@ output "aws_s3_bucket_website_endpoint" {
 }
 
 
-# S3 BUCKET OBJECTS
+# RESOURCE: S3 BUCKET OBJECTS (APPLICATION)
 
 resource "aws_s3_bucket_object" "bucket-objects" {
     bucket       = aws_s3_bucket.bucket.id

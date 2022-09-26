@@ -1,4 +1,5 @@
 # PROVIDER
+
 terraform {
 
   required_providers {
@@ -15,9 +16,4 @@ terraform {
     dynamodb_table = "tf-state-staticsite-table"
   }
 
-}
-
-# PROVIDER CONFIG
-provider "aws" {
-    region = "us-east-1"
 }
