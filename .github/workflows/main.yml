@@ -47,9 +47,9 @@ jobs:
       run : terraform init -input=false
 
     - name: Step 06 - Terraform Validate
-      run : terraform validate -input=false
+      run : terraform validate
 
-    - name: Step 07 - Terraform Validate
+    - name: Step 07 - Terraform Plan
       run : terraform plan -input=false
 
     - name: Step 08 - Terraform Apply
