@@ -16,71 +16,53 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
 3. Selecione o botão **Criar bucket**.
 
-4. Na tela de criação de bucket preencha com as informações abaixo.
+4. Na tela de criação de bucket preencha com as informações abaixo e no final da tela clique em  **Criar bucket**.
 
-   - nome: `fiap-cloud-vds-aws-s3-<SEU_NOME>`
-   - região: Selecione uma região de preferência
-   - versionamento: Habilite a opção **Versionamento de Bucket**
+   > **ATENÇÃO !!!** Substitua o texto **Bucket-Name** por um nome de Bucket qualquer. Mantenha as demais opções padrões. 
 
-     > Mantenha as demais opções padrões. 
+   - **nome**: `Bucket-Name`
+   - **região**: Norte da Virgínia (us-east-1)
+   - **ACLs desabilitadas (recomendado)**: selecionado
+   - **Bloquear todo o acesso público**: desabilitado
+   - **Desativar o bloqueio de todo o acesso público ...:** selecionado
+   - **Versionamento de Bucket**: habilitado
 
-5. Clique sobre o nome do Bucket.
+5. Clique sobre o nome do Bucket criado.
 
-6. No menu **Propriedades** navegue até **Hospedagem de Site estático**, clique em **Editar** e preencha as informações abaixo.
+6. No menu **Permissões** navegue até **Política do bucket**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
 
-   - Hospedagem de site estático: `Ativar`
-   - Documento de índice: `index.html`
-   - Documento de erro opcional: `error.html`
+   > **ATENÇÃO !!!** Substitua o texto **Bucket-Name** pelo nome do bucket utilizado no passo anterior. Mantenha as demais opções padrões. 
 
-7. No menu **Propriedades** verifique a opção **Endpoint de site de bucket** e guarde a url conforme exemplo abaixo.
+    ```
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::Bucket-Name/*"
+            }
+        ]
+    }
+    ```   
 
-   - url: `http://fiap-cloud-vds-aws-s3-<SEU_NOME>.s3-website-us-east-1.amazonaws.com`
-
-     > Guarde esta informação pois precisará a frente.
-
-8. Faça download dos arquivos **index.html** e **error.html** disponíveis no repo GitHub abaixo.
+7. Faça download dos arquivos HTML de exemplo **index.html** e **error.html** do repositório GitHub abaixo.
  
-   - GitHub repository: [https://github.com/FIAP/vds/edit/master/aws/s3/static-site/](https://github.com/FIAP/vds/edit/master/aws/s3/static-site/)
+   > GitHub repository: [https://github.com/kledsonhugo/kledsonhugo.github.io/tree/master/_data/](https://github.com/kledsonhugo/kledsonhugo.github.io/tree/master/_data/)
 
-9. No menu **Objetos** clique em **Carregar**.
+8. No menu **Objetos** clique em **Carregar**.
 
    - Selecione **Adicionar arquivos**
    - Busque pelos arquivos baixados e clique em **Carregar**
    - Clique em **Fechar**
 
-10. Abra nova guia do navegador e acesse o endpoint capturado.
+9. No menu **Propriedades** navegue até **Hospedagem de Site estático**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
 
-    > Você deverá receber mensagem **Access Denied**.
-    > Demonstra que o Bucket ou Objetos estão sem acesso público. 
+   - Hospedagem de site estático: `Ativar`
+   - Documento de índice: `index.html`
+   - Documento de erro opcional: `error.html`
 
-11. No menu **Objetos** selcione os arquivos html e clique em **Ações** e **Tornar público**.
+10. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique na url **Endpoint de site de bucket**.
 
-12. Clique em **Tornar Público**.
-
-    > Você deverá receber mensagem **Falha ao editar o acesso público pois o Bucket está com acesso restrito**. 
-    > Demonstra que objetos não podem ser públicos se um Bucket for privado. 
-
-13. CLique em **Fechar**.
-
-14. No menu **Permissões** clique em **Editar**.
-
-15. Desmarque a opção **Bloquear todo o acesso público** e clique em **Salvar Alterações**.
-
-16. Digite a palavra de confirmação e clique em **Confirmar**.
-
-17. Atualize o conteúdo do navegador com o endpoint.
-
-18. No menu **Objetos** repita o passo de seleção dos arquivos html e clique em **Ações** e **Tornar público**.
-
-19. Atualize seu navegador com o endpoint guardado.
-
-    > Você ainda deverá receber uma mensagem **Access Denied**. 
-    > Agora que você tornou o Bucket público, você ainda precisa tornar os objetos públicos. 
-
-20. No menu **Objetos** selcione novamente os arquivos html e clique em **Ações** e **Tornar público**.
-
-21. Clique em **Tornar Público**.
-
-22. Abra uma nova guia do seu navegador e acesso o endpoint.
-
-    > Você deverá visualizar o conteúdo do arquivo index.html 
+    > **SUCESSO !!!** O sucesso dessa atividade será a abertura de uma página web mostrando o conteúdo do arquivo **index.html**.
