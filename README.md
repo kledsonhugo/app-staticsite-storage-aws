@@ -1,4 +1,4 @@
-# Armazenamento AWS S3 (Site estático) #
+# Armazenamento AWS S3 (Site estático)
 
 O objetivo desta atividade é explorar na prática os conceitos de armazenamento utilizando o serviço AWS Simple Storage Service (S3). 
 
@@ -8,8 +8,14 @@ Hospedar um site estático no Amazon S3 proporciona um site altamente escalável
 
 Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 para hospedagem e faça upload do conteúdo do seu site.
 
-> Referência: [https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html)
-#
+> Referência: [https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html)<br><br>
+
+## Target architecture
+
+![Notifier](/images/target_architecture.png)<br><br>
+
+## Passo a passo
+
 1. Faça login no AWS Console.
 
 2. Em **Serviços** selecione **S3**.
@@ -25,7 +31,7 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
    - **ACLs desabilitadas (recomendado)**: selecionado
    - **Bloquear todo o acesso público**: desabilitado
    - **Desativar o bloqueio de todo o acesso público ...:** selecionado
-   - **Versionamento de Bucket**: habilitado
+   - **Versionamento de Bucket**: habilitado<br><br>
 
 5. Clique sobre o nome do Bucket criado.
 
@@ -55,13 +61,13 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
    - Selecione **Adicionar arquivos**
    - Busque pelos arquivos baixados e clique em **Carregar**
-   - Clique em **Fechar**
+   - Clique em **Fechar**<br><br>
 
 9. No menu **Propriedades** navegue até **Hospedagem de Site estático**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
 
    - Hospedagem de site estático: `Ativar`
    - Documento de índice: `index.html`
-   - Documento de erro opcional: `error.html`
+   - Documento de erro opcional: `error.html`<br><br>
 
 10. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique na url **Endpoint de site de bucket**.
 
