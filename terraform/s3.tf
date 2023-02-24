@@ -2,10 +2,10 @@
 
 resource "aws_s3_bucket" "bucket" {
     bucket = "${var.bucket_name}"
-    website {
-        index_document = "index.html"
-        error_document = "error.html"
-    }
+    # website {
+    #     index_document = "index.html"
+    #     error_document = "error.html"
+    # }
 }
 
 resource "aws_s3_bucket_versioning" "bucket-versioning" {
@@ -20,8 +20,20 @@ resource "aws_s3_bucket_acl" "bucket-acl" {
     acl    = "public-read"
 }
 
+resource "aws_s3_bucket_website_configuration" "bucket-website-configuration" {
+    bucket = aws_s3_bucket.bucket.id
+
+    index_document { 
+        suffix = "index.html"
+    }
+
+    error_document {
+        key = "error.html"
+    }
+}
+
 output "aws_s3_bucket_website_endpoint" {
-    value = "http://${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
+    value = "http://${var.website_endpoint =="true"? aws_s3_bucket_website_configuration.bucket-website-configuration.website_endpoint : ""}"
 }
 
 
