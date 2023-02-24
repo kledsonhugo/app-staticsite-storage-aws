@@ -1,7 +1,7 @@
 # VARS
 
 variable "bucket_name" {
-    default = "terraform-staticsite"
+    default = "tf-staticsite-s3"
 }
 
 variable "website_endpoint" {

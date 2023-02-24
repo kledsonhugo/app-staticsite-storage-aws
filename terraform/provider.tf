@@ -11,9 +11,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "tf-state-staticsite-s3-bucket"
+    bucket         = "tf-staticsite-s3-state"
     key            = "terraform.tfstate"
-    dynamodb_table = "tf-state-staticsite-s3-table"
+    dynamodb_table = "tf-staticsite-s3-state"
     region         = "us-east-1"
   }
 
