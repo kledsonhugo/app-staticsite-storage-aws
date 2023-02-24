@@ -8,11 +8,17 @@ Hospedar um site estático no Amazon S3 proporciona um site altamente escalável
 
 Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 para hospedagem e faça upload do conteúdo do seu site.
 
-> Referência: [https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html)<br><br>
+> Referência: [https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/WebsiteHosting.html)
+
+<br><br>
+
 
 ## Target architecture
 
-![Notifier](/images/target_architecture.png)<br><br>
+![Notifier](/images/target_architecture.png)
+
+<br><br>
+
 
 ## Passo a passo
 
@@ -20,7 +26,7 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
 2. Em **Serviços** selecione **S3**.
 
-3. Selecione o botão **Criar bucket**.
+3. Selecione **Criar bucket**.
 
 4. Na tela de criação de bucket preencha com as informações abaixo e no final da tela clique em  **Criar bucket**.
 
@@ -28,39 +34,24 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
    - **nome**: `Bucket-Name`
    - **região**: Norte da Virgínia (us-east-1)
-   - **ACLs desabilitadas (recomendado)**: selecionado
+   - **ACLs habilitadas**: selecionado
    - **Bloquear todo o acesso público**: desabilitado
-   - **Desativar o bloqueio de todo o acesso público ...:** selecionado
-   - **Versionamento de Bucket**: habilitado<br><br>
+   - **Reconheço que as configurações atuais podem fazer com que este bucket e os objetos dentro dele se tornem públicos:** selecionado
+   - **Versionamento de Bucket**: Ativar<br><br>
 
-5. Clique sobre o nome do Bucket criado.
+5. Clique sobre o nome do bucket criado.
 
-6. No menu **Permissões** navegue até **Política do bucket**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
+6. No menu **Permissões** navegue até **Lista de controle de acesso (ACL)**, clique em **Editar**, selecione as opções **Listar** e **Leitura** para o beneficiário **Todos (acesso público)**, marque a opção **Compreendo os efeitos dessas alterações em meus objetos e buckets** e clique em **Salvar alterações**. 
 
-   > **ATENÇÃO !!!** Substitua o texto **Bucket-Name** pelo nome do bucket utilizado no passo anterior. Mantenha as demais opções padrões. 
-
-    ```
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::Bucket-Name/*"
-            }
-        ]
-    }
-    ```   
-
-7. Faça download dos arquivos HTML de exemplo **index.html** e **error.html** do repositório GitHub abaixo.
+7. Faça download dos arquivos [index.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/index.html) e [error.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/error.html).
  
-   > GitHub repository: [https://github.com/kledsonhugo/app-static-site-s3/tree/main/app](https://github.com/kledsonhugo/app-static-site-s3/tree/main/app)
-
 8. No menu **Objetos** clique em **Carregar**.
 
    - Selecione **Adicionar arquivos**
-   - Busque pelos arquivos baixados e clique em **Carregar**
+   - Busque pelos arquivos `index.html` e `error.html` baixados anteriormente e os selecione
+   - Em **Permissões**, selecione **Conceder acesso público de leitura**
+   - Marque a opção **Compreendo o risco de conceder acesso público de leitura aos objetos especificados**
+   - Clique em **Carregar**
    - Clique em **Fechar**<br><br>
 
 9. No menu **Propriedades** navegue até **Hospedagem de Site estático**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
@@ -71,4 +62,6 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
 10. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique na url **Endpoint de site de bucket**.
 
-    > **SUCESSO !!!** O sucesso dessa atividade será a abertura de uma página web mostrando o conteúdo do arquivo **index.html**.
+<br><br>
+
+**SUCESSO !!!** O sucesso dessa atividade será a abertura de uma página web pública na Internet mostrando o conteúdo do arquivo `index.html` hospedado no serviço AWS S3. Parabéns !!!
