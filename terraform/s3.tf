@@ -35,16 +35,6 @@ output "aws_s3_bucket_website_endpoint" {
 
 # RESOURCE: S3 BUCKET OBJECTS (APPLICATION)
 
-# resource "aws_s3_bucket_object" "bucket-objects" {
-#     bucket       = aws_s3_bucket.bucket.id
-#     for_each     = fileset("../app/", "*")
-#     key          = each.value
-#     source       = "../app/${each.value}"
-#     acl          = "public-read"
-#     content_type = "text/html"
-#     etag         = "${md5(file("../app/${each.value}"))}"
-# }
-
 resource "aws_s3_object" "bucket-objects" {
     bucket       = aws_s3_bucket.bucket.id
     for_each     = fileset("../app/", "*")
