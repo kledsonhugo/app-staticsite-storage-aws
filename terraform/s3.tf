@@ -21,7 +21,7 @@ resource "aws_s3_bucket_acl" "bucket-acl" {
 }
 
 output "aws_s3_bucket_website_endpoint" {
-    value = "${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : "http://"}"
+    value = "http://${var.website_endpoint =="true"? aws_s3_bucket.bucket.website_endpoint : ""}"
 }
 
 
