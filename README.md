@@ -65,3 +65,4 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 <br><br>
 
 **SUCESSO !!!** O sucesso dessa atividade será a abertura de uma página web pública na Internet mostrando o conteúdo do arquivo `index.html` hospedado no serviço AWS S3. Parabéns !!!
+
