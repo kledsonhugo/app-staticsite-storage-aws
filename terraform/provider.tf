@@ -1,7 +1,7 @@
 # PROVIDER
 terraform {
 
-  required_version = "~> 1.3.9"
+  required_version = "~> 1.4"
 
   required_providers {
     aws = {
@@ -11,9 +11,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "tf-staticsite-s3-state1"
+    bucket         = "tf-staticsite-s3-state-v1"
     key            = "terraform.tfstate"
-    dynamodb_table = "tf-staticsite-s3-state1"
+    dynamodb_table = "tf-staticsite-s3-state-v1"
     region         = "us-east-1"
   }
 
