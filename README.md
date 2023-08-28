@@ -43,7 +43,7 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
 7. Faça download dos arquivos [index.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/index.html) e [error.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/error.html).
 
-> **ATENÇÃO !!!** Caso você não esteja logado no GitHub, não aparecerá a opção para download. Nesse caso copie o conteúdo do arquivo no GitHub, crie um arquivo na sua máquina (escolha qualquer local de sua preferência) e cole o conteúdo copiado dentro do novo arquivo. Faça isso tanto para o arquivo index.html, quanto para o arquivo error.html.
+   > **ATENÇÃO !!!** Caso você não esteja logado no GitHub, não aparecerá a opção para download. Nesse caso copie o conteúdo do arquivo no GitHub, crie um arquivo na sua máquina (escolha qualquer local de sua preferência) e cole o conteúdo copiado dentro do novo arquivo. Faça isso tanto para o arquivo index.html, quanto para o arquivo error.html.
  
 8. No menu **Objetos** clique em **Carregar**.
 
