@@ -30,7 +30,7 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
    > **ATENÇÃO !!!** Substitua o texto **Bucket-Name** por um nome de Bucket qualquer. Mantenha as demais opções padrões. 
 
-   - **nome**: `Bucket-Name`
+   - **nome**: `bucket-name`
    - **região**: Norte da Virgínia (us-east-1)
    - **ACLs habilitadas**: selecionado
    - **Bloquear todo o acesso público**: desabilitado
@@ -39,28 +39,34 @@ Para hospedar um site estático no Amazon S3, configure um bucket do Amazon S3 p
 
 5. Clique sobre o nome do bucket criado.
 
-6. No menu **Permissões** navegue até **Lista de controle de acesso (ACL)**, clique em **Editar**, selecione as opções **Listar** e **Leitura** para o beneficiário **Todos (acesso público)**, marque a opção **Compreendo os efeitos dessas alterações em meus objetos e buckets** e clique em **Salvar alterações**. 
+6. No menu **Permissões** navegue até **Lista de controle de acesso (ACL)** e clique em **Editar**.
 
-7. Faça download dos arquivos [index.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/index.html) e [error.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/error.html).
+7. Selecione as opções **Listar** e **Leitura** para o beneficiário **Todos (acesso público)**.
 
-   > **ATENÇÃO !!!** Caso você não esteja logado no GitHub, não aparecerá a opção para download. Nesse caso copie o conteúdo do arquivo no GitHub, crie um arquivo na sua máquina (escolha qualquer local de sua preferência) e cole o conteúdo copiado dentro do novo arquivo. Faça isso tanto para o arquivo index.html, quanto para o arquivo error.html.
+8. Marque a opção **Compreendo os efeitos dessas alterações em meus objetos e buckets** e clique em **Salvar alterações**. 
+
+9. Faça download para sua máquina dos arquivos [index.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/index.html) e [error.html](https://github.com/kledsonhugo/app-static-site-s3/blob/main/app/error.html).
+
+   > **ATENÇÃO !!!** Caso você não esteja logado no GitHub, não aparecerá a opção para download. Nesse caso copie o conteúdo do arquivo, crie um arquivo novo na sua máquina e cole o conteúdo copiado para dentro do novo arquivo. Faça isso tanto para o arquivo index.html, quanto para o arquivo error.html. Verifique a extenção do arquivo criado na sua máquina. Deverá ter a extenção .html
  
-8. No menu **Objetos** clique em **Carregar**.
+10. No menu **Objetos** clique em **Carregar**.
 
-   - Selecione **Adicionar arquivos**
-   - Busque pelos arquivos `index.html` e `error.html` baixados anteriormente e os selecione
-   - Em **Permissões**, selecione **Conceder acesso público de leitura**
-   - Marque a opção **Compreendo o risco de conceder acesso público de leitura aos objetos especificados**
-   - Clique em **Carregar**
-   - Clique em **Fechar**<br><br>
+    - Selecione **Adicionar arquivos**
+    - Busque pelos arquivos `index.html` e `error.html` baixados anteriormente e os selecione
+    - Em **Permissões**, selecione **Conceder acesso público de leitura**
+    - Marque a opção **Compreendo o risco de conceder acesso público de leitura aos objetos especificados**
+    - Clique em **Carregar**
+    - Clique em **Fechar**<br><br>
 
-9. No menu **Propriedades** navegue até **Hospedagem de Site estático**, clique em **Editar**, preencha com as informações abaixo e clique em **Salvar alterações**.
+11. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique em **Editar**.
 
-   - Hospedagem de site estático: `Ativar`
-   - Documento de índice: `index.html`
-   - Documento de erro opcional: `error.html`<br><br>
+12. Preencha com as informações abaixo e clique em **Salvar alterações**.
 
-10. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique na url **Endpoint de site de bucket**.
+    - Hospedagem de site estático: `Ativar`
+    - Documento de índice: `index.html`
+    - Documento de erro opcional: `error.html`<br><br>
+
+13. No menu **Propriedades** navegue até **Hospedagem de Site estático** e clique na url **Endpoint de site de bucket**.
 
 <br>
 
