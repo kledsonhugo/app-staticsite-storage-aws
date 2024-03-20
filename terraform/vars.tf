@@ -1,7 +1,8 @@
 # VARS
 
 variable "bucket_name" {
-  default = "tf-staticsite-s3-v1"
+  # default = "<nome>-<sobrenome>-0001"   # Exemplo apenas
+  default = "kledson-basso-0001"
 }
 
 variable "website_endpoint" {
