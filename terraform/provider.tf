@@ -1,27 +1,27 @@
 # PROVIDER
 terraform {
 
-  required_version = "~> 1.7"
+  required_version = "~> 1.8.5"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.38"
+      version = "~> 5.55"
     }
   }
 
-  # backend "s3" {
-  #   bucket         = "tf-staticsite-s3-state-v1"
-  #   key            = "terraform.tfstate"
-  #   dynamodb_table = "tf-staticsite-s3-state-v1"
-  #   region         = "us-east-1"
-  # }
+  backend "s3" {
+    bucket         = "kledson-basso-001-tf"
+    key            = "terraform.tfstate"
+    dynamodb_table = "kledson-basso-001-tf"
+    region         = "us-east-1"
+  }
 
 }
 
-provider "aws" {
-  region                   = "us-east-1"
-  shared_config_files      = [".aws/config"]
-  shared_credentials_files = [".aws/credentials"]
-  profile                  = "fiap-iac"
-}
+# provider "aws" {
+#   region                   = "us-east-1"
+#   shared_config_files      = [".aws/config"]
+#   shared_credentials_files = [".aws/credentials"]
+#   profile                  = "iac"
+# }

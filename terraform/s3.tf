@@ -1,11 +1,9 @@
-# RESOURCE: S3 BUCKET (INFRA)
-
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket-ownership" {
-  bucket   = aws_s3_bucket.bucket.id
+  bucket = aws_s3_bucket.bucket.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
@@ -24,8 +22,8 @@ resource "aws_s3_bucket_acl" "bucket-acl" {
     aws_s3_bucket_ownership_controls.bucket-ownership,
     aws_s3_bucket_public_access_block.bucket-public-access,
   ]
-  bucket   = aws_s3_bucket.bucket.id
-  acl      = "public-read"
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_versioning" "bucket-versioning" {
@@ -44,13 +42,6 @@ resource "aws_s3_bucket_website_configuration" "bucket-website-configuration" {
     key = "error.html"
   }
 }
-
-output "aws_s3_bucket_website_endpoint" {
-  value = "http://${var.website_endpoint == "true" ? aws_s3_bucket_website_configuration.bucket-website-configuration.website_endpoint : ""}"
-}
-
-
-# RESOURCE: S3 BUCKET OBJECTS (APPLICATION)
 
 resource "aws_s3_object" "bucket-objects" {
   depends_on = [
