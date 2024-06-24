@@ -17,7 +17,7 @@ jobs:
     steps:
 
     - name: Step 01 - Terraform Setup
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: $TERRAFORM_VERSION
 
@@ -25,7 +25,7 @@ jobs:
       run : terraform --version
 
     - name: Step 03 - CheckOut GitHub Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Step 04 - Authenticate with AWS
       uses: aws-actions/configure-aws-credentials@v3
