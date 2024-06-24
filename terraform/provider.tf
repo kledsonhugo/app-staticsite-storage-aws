@@ -11,9 +11,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "kledson-basso-001-tf"
+    bucket         = "${var.bucket_name}-tf"
     key            = "terraform.tfstate"
-    dynamodb_table = "kledson-basso-001-tf"
+    dynamodb_table = "${var.bucket_name}-tf"
     region         = "us-east-1"
   }
 
