@@ -1,4 +1,4 @@
-# Armazenamento AWS S3 (Site estático)
+# Armazenamento AWS S3 (Site estático) 
 
 O objetivo desta atividade é explorar na prática os conceitos de armazenamento utilizando o serviço AWS Simple Storage Service (S3). 
 
